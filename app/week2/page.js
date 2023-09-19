@@ -3,8 +3,9 @@ import StudentInfo from "../studentInfo";
 export default function ShoppingList() {
   return (
     
-    <div >
-      <h1 class="text-4xl bg-blue-500 text-center text-white">My Shopping List</h1>
+    <div class="bg-black p-60 text-center m-80 italic">
+      <h1 class="text-4xl text-blue-500">My Shopping List</h1>
+      <hr></hr>
       <StudentInfo/>
     </div>
   );
