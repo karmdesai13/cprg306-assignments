@@ -1,4 +1,5 @@
 import StudentInfo from "../studentInfo";
+import Link from "next/link";
 
 export default function ShoppingList() {
   return (
@@ -7,6 +8,7 @@ export default function ShoppingList() {
       <h1 class="text-4xl text-blue-500">My Shopping List</h1>
       <hr></hr>
       <StudentInfo/>
+      
     </div>
   );
 }
