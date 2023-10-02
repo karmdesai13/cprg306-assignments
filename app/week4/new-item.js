@@ -25,7 +25,7 @@ export default function NewItem() {
     }
 
     const handleClick = () => {
-        alert('Added Item: ${name} ,Quantity : ${quantity}, Category: ${category}')
+        alert('Added Name: ' + name + ' Quantity: ' + quantity + ' Category: ' + category)
       };
 
     const handleNameChange = (event) => {
@@ -42,29 +42,34 @@ export default function NewItem() {
 
 
     return(
-        <main>
-            <div>
+        
+            <div className="flex items-center justify-center">
                 <form onSubmit={handleSubmit}>
-                    <label>
-                     <span>Name</span>
+                    <label className="m-10 p-40">
+                     <span>Name:  </span>
                      <input type="text" 
                      value={name} 
                      onChange={handleNameChange} 
-                     required/>
+                     required 
+                     className="rounded border-blue-400 m-1"/>
 
                     </label>
 
-                    <label>
+                    
+
+                    <label className="m-10 p-80" >
                         <span>Quantity:</span>
                         <input type="number"
-                        min="1"
-                        max="100" 
+                        min = {1}
+                        max = {100} 
                         value={quantity} 
-                        onChange={Number(handleQuantityChange)} 
+                        onChange={handleQuantityChange} 
                         required/>
                     </label>
 
-                    <label>
+                   
+
+                    <label className="m-10 p-40">
                         <span>Category:</span>
                         <select value={category} onChange={handleCategoryChange} required>
                             <option value="produce">Produce</option>
@@ -81,9 +86,11 @@ export default function NewItem() {
                         </select>
                     </label>
 
-                    <button type="submit" onClick={handleClick}>Add Item</button>
+                    
+
+                    <button type="submit" onClick={handleClick} className="bg-blue-500 p-4 m-6 text-center hover:bg-blue-900">Add Item</button>
                 </form>
             </div>
-        </main>
+        
     );
 }
