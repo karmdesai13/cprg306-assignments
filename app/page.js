@@ -10,6 +10,8 @@ export default function cprg306() {
       <StudentInfo/>
       <Link href="./week2" className="text-white m-4 hover:text-red-500 underline">Week2</Link>
       <Link href="./week4" className="text-white m-4 hover:text-red-500 underline">Week4</Link>
+      <Link href="./week5" className="text-white m-4 hover:text-red-500 underline">Week5</Link>
+
     </div> 
     
   );
