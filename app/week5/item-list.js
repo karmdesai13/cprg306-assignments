@@ -16,17 +16,17 @@ export default function ItemList() {
 
     return(
 
-        <div className="flex ">
+        <div className="flex">
 
-        <h1 className="text-xl text-white p-3 m-0 h-10 .top-0">Sort by:</h1>
+        <h1 className="text-xl text-white p-3 m-0 h-10 ">Sort by:</h1>
         <button onClick={() => setSortby("name")} 
-                className="bg-blue-500 text-white p-3 m-2  hover:bg-orange-500 border border-yellow-600 rounded h-10 .top-0"
+                className="bg-blue-500 text-white p-3 m-2  hover:bg-orange-500 border border-yellow-600 rounded h-10"
                 >Sort by Name</button> 
         <button onClick={() => setSortby("category")} 
-             className="bg-blue-500 text-white p-3 m-2  hover:bg-orange-500 border border-yellow-600 rounded h-10 .top-0">Sort by Category</button>
+             className="bg-blue-500 text-white p-3 m-2  hover:bg-orange-500 border border-yellow-600 rounded h-10 ">Sort by Category</button>
         
          
-        <ul className="m-5 p-30 ">
+        <ul className="m-5 p-30 space-y-0.5 ">
             {sortedItems.map((item) => (
                 <li key={item.id}>
                     {item.name} - {item.category}
