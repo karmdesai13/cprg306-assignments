@@ -25,7 +25,9 @@ export default function NewItem() {
     }
 
     const handleClick = () => {
-        alert('Added Name: ' + name + ' Quantity: ' + quantity + ' Category: ' + category)
+        alert('Added Name: ' + name +'\n'+ 
+              'Quantity: ' + quantity + '\n'+
+              'Category: ' + category)
       };
 
     const handleNameChange = (event) => {
@@ -42,12 +44,12 @@ export default function NewItem() {
 
 
     return(
-        <main>
-            <h1 className="text-2xl text-center p-4 m-5">Add New Item</h1>
+        <main className="">
+            <h1 className="text-2xl  text-center p-4 m-5">Add New Item</h1>
             <div className="">
                 <form onSubmit={handleSubmit}>
-                <ul className="w-30 bg-white text-black space-y-4 p-5">
-                    <li>
+                <ul className=" flex justify-between w-30 bg-white text-black space-y-4 p-5">
+                    <li className="mt-3">
                      <label className="">
                      <span>Name:  </span>
                      <input type="text" 
