@@ -42,36 +42,42 @@ export default function NewItem() {
 
 
     return(
-        
-            <div className="flex items-center justify-center">
+        <main>
+            <h1 className="text-2xl text-center p-4 m-5">Add New Item</h1>
+            <div className="">
                 <form onSubmit={handleSubmit}>
-                    <label className="m-10 p-40">
+                <ul className="w-30 bg-white text-black space-y-4 p-5">
+                    <li>
+                     <label className="">
                      <span>Name:  </span>
                      <input type="text" 
                      value={name} 
                      onChange={handleNameChange} 
                      required 
-                     className="rounded border-blue-400 m-1"/>
+                     className="border-black border-2 rounded m-1"/>
 
-                    </label>
+                     </label>
+                    </li>
 
                     
-
-                    <label className="m-10 p-80" >
+                    <li>
+                     <label className="" >
                         <span>Quantity:</span>
                         <input type="number"
                         min = {1}
                         max = {100} 
                         value={quantity} 
                         onChange={handleQuantityChange} 
+                        className="border-black border-2 rounded m-1"
                         required/>
-                    </label>
+                     </label>
+                    </li>
 
                    
-
-                    <label className="m-10 p-40">
+                    <li>
+                     <label className="">
                         <span>Category:</span>
-                        <select value={category} onChange={handleCategoryChange} required>
+                        <select value={category} onChange={handleCategoryChange} className="border-black border-2 rounded m-1" required>
                             <option value="produce">Produce</option>
                             <option value="dairy">Dairy</option>
                             <option value="bakery">Bakery</option>
@@ -84,13 +90,18 @@ export default function NewItem() {
                             <option value="Household">Household</option>
                             <option value="other">Other</option>
                         </select>
-                    </label>
+                     </label>
+                    </li>
 
                     
 
-                    <button type="submit" onClick={handleClick} className="bg-blue-500 p-4 m-6 text-center hover:bg-blue-900">Add Item</button>
+                    
+                    <button type="submit" onClick={handleClick} className="bg-blue-500 p-4 m-6 text-center hover:bg-blue-900 border-black border-2 rounded-xl">
+                        Add Item
+                    </button>
+                </ul>
                 </form>
             </div>
-        
+        </main> 
     );
 }
