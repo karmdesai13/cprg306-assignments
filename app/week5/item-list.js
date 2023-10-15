@@ -4,6 +4,20 @@ import eventData from "./items.json";
 
 export default function ItemList() {
     const[sortby, setSortby] = useState("name");
+
+    
+
+    
+    const groupedItems = eventData.reduce((sortby, item) => {
+        if (!sortby[item.category]) {
+            sortby[item.category] = [];
+        }
+        sortby[item.category].push(item);
+        return sortby;
+    }, {});
+
+    
+    const groupSortedItems = Object.keys(groupedItems).sort((a, b) => a.localeCompare(b));
     
     const sortedItems = [...eventData].sort((a, b) => {
         if (sortby === "name") {
@@ -11,20 +25,33 @@ export default function ItemList() {
         } else if (sortby === "category") {
             return  a.category.localeCompare(b.category);
         }
+
+        else if (sortby ==="group") {
+            return groupSortedItems;
+        }
     });
 
 
     return(
 
-        <main className="">
+        <main>
 
         <div className=" text-center">
-          <h1 className="text-xl text-white p-3  h-10 ">Sort by:</h1>
+          <h1 className="text-xl text-white p-3 h-10">Sort By:</h1>
           <button onClick={() => setSortby("name")} 
-                className="bg-blue-500 text-white py-3 px-4 m-2  hover:bg-orange-500 border-2 rounded h-10 font-mono"
+                className={`bg-blue-500 text-white p-2 px-4 m-2  hover:bg-orange-500 border-2 rounded h-10 font-mon 
+                ${ sortby === "name" ? "bg-red-500 underline ": "" }`}
                 >Sort by Name</button> 
           <button onClick={() => setSortby("category")} 
-             className="bg-blue-500 text-white p-3 m-2  hover:bg-orange-500 border-2 rounded h-10 font-mono ">Sort by Category</button>
+             className={`bg-blue-500 text-white p-2 m-2  hover:bg-orange-500 border-2 rounded h-10 font-mono 
+             ${sortby === "category"? "bg-green-500 underline":""}`}>
+                Sort by Category</button>
+
+          <button onClick={() => {setSortby("group")}}
+                    className="bg-blue-500 text-white p-2 m-2 hover-bg-orange-500 border-2 rounded h-10 font-mono"
+                >
+                    Group by Category(not working :) 
+                </button>
         
         </div>
         <div className="m-4  ">
