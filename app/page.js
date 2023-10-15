@@ -3,17 +3,25 @@ import StudentInfo from "./studentInfo";
 
 export default function cprg306() {
   return (
-    <div class="bg-black p-60 text-center m-80 italic">
+    <main class="bg-black p-80 pt-[200px]   italic">
       
-      <h1 className="text-xl text-white"> CPRG 306: Web Development 2 - Assignments</h1>
+      <h1 className="text-xl text-center  text-white mb-5"> CPRG 306: Web Development 2 - Assignments</h1>
       <hr></hr>
       <StudentInfo/>
-      <Link href="./week2" className="text-white m-4 hover:text-red-500 underline">Week2</Link>
-      
-      <Link href="./week4" className="text-white m-4 hover:text-red-500 underline">Week4</Link>
-      <Link href="./week5" className="text-white m-4 hover:text-red-500 underline">Week5</Link>
 
-    </div> 
+       <div className="m-6 text-center ">
+        <Link href="./week2" className="text-white bg-red-600 rounded-full p-2  hover:bg-green-500 underline border-white border-2 ">Week2</Link>
+       </div>
+
+       <div className="m-6 text-center ">
+        <Link href="./week4" className="text-white bg-blue-700 rounded-full p-2 underline  hover:bg-green-500 border-white border-2">Week4</Link>
+       </div>
+
+      <div className="m-6 text-center ">
+        <Link href="./week5" className="text-white bg-purple-600 rounded-full p-2 underline hover:bg-green-500 border-white border-2">Week5</Link>
+      </div>
+
+    </main> 
     
   );
 }

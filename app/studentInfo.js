@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function StudentInfo() {
   return (
-    <div className="StudentInfo">
+    <div className="StudentInfo text-center ">
       
       <p class="text-white m-4">Karm Desai</p>
       <p class="text-white m-4">CPRG 306 A</p>
