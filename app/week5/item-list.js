@@ -39,12 +39,12 @@ export default function ItemList() {
         <div className=" text-center">
           <h1 className="text-xl text-white p-3 h-10">Sort By:</h1>
           <button onClick={() => setSortby("name")} 
-                className={`bg-blue-500 text-white p-2 px-4 m-2  hover:bg-orange-500 hover:text-2xl  border-2 rounded h-10 font-mon 
+                className={`bg-blue-500 text-white p-2 px-4 m-2  hover:bg-orange-500   border-2 rounded h-10 font-mon 
                 ${ sortby === "name" ? "bg-red-500 underline ": "" }`}
                 >Sort by Name
           </button> 
           <button onClick={() => setSortby("category")} 
-             className={`bg-blue-500 text-white p-2 m-2  hover:bg-orange-500 hover:text-2xl border-2 rounded h-10 font-mono 
+             className={`bg-blue-500 text-white p-2 m-2  hover:bg-orange-500  border-2 rounded h-10 font-mono 
              ${sortby === "category"? "bg-green-500 underline":""}`}>
                 Sort by Category
           </button>
