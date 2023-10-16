@@ -58,8 +58,8 @@ export default function ItemList() {
         <div className="m-4  ">
          <ul className=" rounded-full text-center space-y-2 bg-purple-500 text-black border-white border-3 p-4 ring-2 ring-white" >
             {sortedItems.map((item) => (
-                <li key={item.id}>
-                    {item.name} - {item.category}
+                <li key={item.id} className="font-mono">
+                    <p className="align-center text-gray-700 hover:text-2xl hover:text-black "> Pick {item.name} from  {item.category}</p>
                 </li>
             ))}</ul>
         </div>               
