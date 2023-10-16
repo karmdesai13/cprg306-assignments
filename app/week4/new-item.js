@@ -54,6 +54,7 @@ export default function NewItem() {
                      <label>
                      <span>Name :  </span> 
                      <input type="text" 
+                     placeholder="Enter Item Name"
                      value={name} 
                      onChange={handleNameChange} 
                      required 
@@ -101,7 +102,7 @@ export default function NewItem() {
                     
                     <button type="submit" onClick={handleClick} className="bg-blue-500 p-4 m-6 text-center
                      hover:text-white  hover:underline hover:bg-blue-900  border-black border-2 rounded-xl
-                     shadow-2xl shadow-gray-600">
+                     shadow-2xl shadow-gray-600 ">
                         Add Item
                     </button>
                 </ul>
