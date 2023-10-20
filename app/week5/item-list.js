@@ -43,38 +43,37 @@ export default function ItemList() {
 
           <button onClick={() => {setSortby("group")}}
                 className="bg-blue-500 text-white p-2 m-2 hover-bg-orange-500 border-2 rounded h-10 font-mono">
-                Group by Category (Still Trying :) 
+                Group by Category (Working Now) 
           </button>
         
         </div>
-        <div className="m-4  ">
-         
-         <ul className=" rounded-full text-center space-y-2 bg-purple-500 text-black border-white border-3 p-4 ring-2 ring-white" >
-            <p className="text-white font-mono">Pick List for Groceries:</p>
-            {sortedItems.map((item) => (
-                <li key={item.id} className="font-mono">
-                    <p className="align-center text-gray-700 hover:text-2xl hover:text-black "> Pick {item.name} from  {item.category}</p>
-                </li>
-            ))}</ul>
-        </div> 
+       
 
         {sortby==="group"?(
-            <div>
+            <div className="m-4">
                 {Object.entries(groupedItems).map(([category, items]) => (
-                    <div key={category}>
-                        <h3 className="capitalize text-xl">{category}</h3>
+                    <div key={category} className="">
+                        
                         <ul>
+                            <h3 className="capitalize text-2xl">{category}</h3>
                             {items.map((item) => (
-                                <li key={item.id}>{item.name}</li>
+                                <li key={item.id} className="bg-blue-800
+                                m-4 w-[270px] text-xl border-[2px]
+                                border-white rounded
+                                p-3 text-center hover:bg-orange-500
+                                hover:text-3xl hover:w-[400px]">{item.name}</li>
                             ))}
                         </ul>
                     </div>
                 ))}
             </div>
-        ):(<ul>
+        ):(<ul className="m-10">
             {sortedItems.map((item) => (
-                <li key={item.id}>
-                    <p>{item.name} from {item.category}</p>
+                <li key={item.id} className="m-3 bg-blue-900 p-3 
+                 w-[350px] ml-[300px] hover:bg-orange-500 
+                 hover:">
+                    <p className="text-xl"> Pick {item.name}</p>
+                    <p className=""> From {item.category}</p>
                 </li>
             ))}
         </ul>)}
@@ -84,4 +83,5 @@ export default function ItemList() {
 
 
 
-    );}
+    );} 
+    
