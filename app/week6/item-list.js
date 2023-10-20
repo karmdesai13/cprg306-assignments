@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import item from "./items.json";
+import items from "./items.json";
 
 export default function ItemList() {
     const[sortby, setSortby] = useState("name");
@@ -8,7 +8,7 @@ export default function ItemList() {
 
 
     
-    const sortedItems = [...item].sort((a, b) => {
+    const sortedItems = [...items].sort((a, b) => {
         if (sortby === "name") {
             return a.name.localeCompare(b.name);
         } else if (sortby === "category") {
@@ -17,11 +17,11 @@ export default function ItemList() {
 
         else if (sortby ==="group") {
 
-             groupedItems= item.reduce((sortby, item) => {
-                if (!sortby[item.category]) {
-                    sortby[item.category] = [];
+             groupedItems= items.reduce((sortby, items) => {
+                if (!sortby[items.category]) {
+                    sortby[items.category] = [];
                 }
-                sortby[item.category].push(item);
+                sortby[items.category].push(items);
                 return sortby;
             }, {});
         }
@@ -55,15 +55,15 @@ export default function ItemList() {
          
          <ul className=" rounded-full text-center space-y-2 bg-purple-500 text-black border-white border-3 p-4 ring-2 ring-white" >
             <p className="text-white font-mono">Pick List for Groceries:</p>
-            {sortedItems.map((item,index) => (
-                <li key={index}{...item} className="font-mono">
-                    <p className="align-center text-gray-700 hover:text-2xl hover:text-black "> Pick {item.name} from  {item.category}</p>
+            {sortedItems.map((items) => (
+                <li key={...items} className="font-mono">
+                    <p className="align-center text-gray-700 hover:text-2xl hover:text-black "> Pick Quantity { items.quantity} of {items.name} from  {items.category} </p>
                 </li>
             ))}</ul>
         </div>               
         </main>
 
-    );<p className="align-center text-gray-700 hover:text-2xl hover:text-black "> Pick {item.name} from  {item.category}</p>
+    );
 
 
     

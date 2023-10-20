@@ -10,12 +10,12 @@ export default function NewItem({onAddItem}) {
         event.preventDefault();
 
         const Item={
-            name,
-            quantity,
-            category,
+            name :name,
+            quantity : quantity ,
+            category : category,
         }
     
-        console.log(Item);
+        onAddItem(Item);
 
         
 
@@ -24,13 +24,7 @@ export default function NewItem({onAddItem}) {
         setCategory("produce");
     }
 
-    const handleClick = () => {
-         name: name;
-            quantity: quantity;
-            category: category;
-      };
-
-      onAddItem(handleClick);
+    
 
     const handleNameChange = (event) => {
         setName(event.target.value);
@@ -46,12 +40,12 @@ export default function NewItem({onAddItem}) {
 
 
     return(
-        <main>
-            <h1 className="text-2xl p-10  font-serif underline  ">Add New Item To your Shopping List</h1>
+        <main className="">
+            <h1 className="text-2xl p-10 font-serif underline  ">Add New Item To your Shopping List</h1>
              
-            <div >
+            <div className="">
                 <form onSubmit={handleSubmit}>
-                <ul className=" bg-white w-50 text-black rounded-lg">
+                <ul className=" bg-blue-800  text-white rounded-lg  ">
                     <li className="pt-5 pb-2">
                      <label>
                      <span>Name :  </span>
@@ -60,13 +54,13 @@ export default function NewItem({onAddItem}) {
                      value={name}
                      onChange={handleNameChange}
                      required
-                     className="border-black border-2 rounded "/>
+                     className="border-black border-2 rounded text-black "/>
 
                      </label>
                     </li>
 
                     
-                    <li className="pb-2 mt-2 text-left ml-[300px]">
+                    <li className="pb-2 mt-2 text-left ml-[460px]">
                      <label>
                         <span>Quantity :</span>
                         <input type="number"
@@ -74,16 +68,16 @@ export default function NewItem({onAddItem}) {
                         max = {100}
                         value={quantity}
                         onChange={handleQuantityChange}
-                        className="border-black border-2 rounded m-1"
+                        className="border-black border-2 rounded m-1 text-black"
                         required/>
                      </label>
                     </li>
 
                    
-                    <li className="pb-2 mt-2 text-left ml-[300px]">
+                    <li className="pb-2 mt-2 text-left ml-[460px]">
                      <label >
                         <span>Category :</span>
-                        <select value={category} onChange={handleCategoryChange} className="border-black border-2 rounded m-1" required>
+                        <select value={category} onChange={handleCategoryChange} className="border-black border-2 rounded m-1 text-black" required>
                             <option value="produce">Produce</option>
                             <option value="dairy">Dairy</option>
                             <option value="bakery">Bakery</option>
@@ -102,9 +96,8 @@ export default function NewItem({onAddItem}) {
                     
 
                     
-                    <button type="submit" onClick={handleClick} className="bg-blue-500 p-4 m-6 text-center
-                     hover:text-white  hover:underline hover:bg-blue-900  border-black border-2 rounded-xl
-                     shadow-2xl shadow-gray-600 ">
+                    <button type="submit" className="bg-orange-600 p-4 m-6 text-center
+                     hover:text-white  hover:underline hover:bg-green-500  border-black border-2 rounded-xl ">
                         Add Item
                     </button>
                 </ul>

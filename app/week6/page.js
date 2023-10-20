@@ -9,17 +9,17 @@ export default function Page() {
 
     const [items, setItems] = useState(itemsData);
 
-    const handleSubmit = (newItem) => {
-        setItems((prevItems) => {
-            return [...prevItems, newItem];
-        });
+    const handleAddItem = (newItem) => {
+        setItems((newItem) => 
+            [...items, newItem]
+        );
     };
     return (
 
         
 
         <div className="bg-black text-white p-40  text-center">
-            <NewItem  onAddItem={handleSubmit}/>
+            <NewItem  onAddItem={handleAddItem}/>
             <ItemList  items={items}/>
 
         </div>
