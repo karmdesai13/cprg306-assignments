@@ -13,17 +13,15 @@ export default function ItemList() {
             return  a.category.localeCompare(b.category);
         }
 
-        else if (sortby ==="group") {
-
-             groupedItems= eventData.reduce((sortby, item) => {
-                if (!sortby[item.category]) {
-                    sortby[item.category] = [];
-                }
-                sortby[item.category].push(item);
-                return sortby;
-            }, {});
-        }
-    });
+    if (sortby === "group") {
+        groupedItems = eventData.reduce((sortby, item) => {
+            if (!sortby[item.category]) {
+                sortby[item.category] = [];
+            }
+            sortby[item.category].push(item);
+            return sortby;
+        }, {});
+    }});
 
 
     return(
@@ -58,12 +56,32 @@ export default function ItemList() {
                     <p className="align-center text-gray-700 hover:text-2xl hover:text-black "> Pick {item.name} from  {item.category}</p>
                 </li>
             ))}</ul>
-        </div>               
+        </div> 
+
+        {sortby==="group"?(
+            <div>
+                {Object.entries(groupedItems).map(([category, items]) => (
+                    <div key={category}>
+                        <h3 className="capitalize text-xl">{category}</h3>
+                        <ul>
+                            {items.map((item) => (
+                                <li key={item.id}>{item.name}</li>
+                            ))}
+                        </ul>
+                    </div>
+                ))}
+            </div>
+        ):(<ul>
+            {sortedItems.map((item) => (
+                <li key={item.id}>
+                    <p>{item.name} from {item.category}</p>
+                </li>
+            ))}
+        </ul>)}
+
         </main>
 
-    );<p className="align-center text-gray-700 hover:text-2xl hover:text-black "> Pick {item.name} from  {item.category}</p>
 
 
-    
 
-}
+    );}
