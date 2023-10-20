@@ -4,20 +4,7 @@ import eventData from "./items.json";
 
 export default function ItemList() {
     const[sortby, setSortby] = useState("name");
-
-    
-
-    
-    const groupedItems = eventData.reduce((sortby, item) => {
-        if (!sortby[item.category]) {
-            sortby[item.category] = [];
-        }
-        sortby[item.category].push(item);
-        return sortby;
-    }, {});
-
-    
-    const groupSortedItems = Object.keys(groupedItems).sort((a, b) => a.localeCompare(b));
+    let groupedItems={};
     
     const sortedItems = [...eventData].sort((a, b) => {
         if (sortby === "name") {
@@ -27,7 +14,14 @@ export default function ItemList() {
         }
 
         else if (sortby ==="group") {
-            return groupSortedItems;
+
+             groupedItems= eventData.reduce((sortby, item) => {
+                if (!sortby[item.category]) {
+                    sortby[item.category] = [];
+                }
+                sortby[item.category].push(item);
+                return sortby;
+            }, {});
         }
     });
 
@@ -39,12 +33,12 @@ export default function ItemList() {
         <div className=" text-center">
           <h1 className="text-xl text-white p-3 h-10">Sort By:</h1>
           <button onClick={() => setSortby("name")} 
-                className={`bg-blue-500 text-white p-2 px-4 m-2  hover:bg-orange-500   border-2 rounded h-10 font-mon 
+                className={`bg-blue-500 text-white p-2 px-4 m-2  hover:bg-orange-500 hover:text-xl  border-2 rounded h-10 font-mon 
                 ${ sortby === "name" ? "bg-red-500 underline ": "" }`}
                 >Sort by Name
           </button> 
           <button onClick={() => setSortby("category")} 
-             className={`bg-blue-500 text-white p-2 m-2  hover:bg-orange-500  border-2 rounded h-10 font-mono 
+             className={`bg-blue-500 text-white p-2 m-2  hover:bg-orange-500 hover:text-xl border-2 rounded h-10 font-mono 
              ${sortby === "category"? "bg-green-500 underline":""}`}>
                 Sort by Category
           </button>
@@ -67,7 +61,7 @@ export default function ItemList() {
         </div>               
         </main>
 
-    );
+    );<p className="align-center text-gray-700 hover:text-2xl hover:text-black "> Pick {item.name} from  {item.category}</p>
 
 
     
