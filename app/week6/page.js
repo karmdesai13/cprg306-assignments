@@ -9,17 +9,16 @@ export default function Page() {
 
     const [items, setItems] = useState(itemsData);
 
-    const handleAddItem = (newItem) => {
-        setItems((newItem) => 
-            [...items, newItem]
-        );
-    };
+    function handleAddItem(item) {
+        alert("Adding Item: " + item.name);
+        setItems([...items, item]);
+    }
     return (
 
         
 
         <div className="bg-black text-white p-40  text-center">
-            <NewItem  onAddItem={handleAddItem}/>
+            <NewItem  OnAddItem={(item)=>handleAddItem(item)}/>
             <ItemList  items={items}/>
 
         </div>

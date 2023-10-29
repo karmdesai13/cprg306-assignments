@@ -1,28 +1,26 @@
 "use client";
 import { useState } from "react";
 
-export default function NewItem({onAddItem}) {
+export default function NewItem({OnAddItem}) {
     const [name, setName] = useState("");
     const [quantity, setQuantity] = useState(1);
     const [category, setCategory] = useState("produce");
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-
-        const Item={
-            name :name,
-            quantity : quantity ,
-            category : category,
-        }
-    
-        onAddItem(Item);
-
-        
+    function handleSubmit(e) {
+        e.preventDefault();
+        const item = {name, quantity, category};
+        OnAddItem(item);
 
         setName("");
         setQuantity(1);
         setCategory("produce");
+        
     }
+
+        
+
+       
+    
 
     
 
@@ -47,10 +45,10 @@ export default function NewItem({onAddItem}) {
                 <form onSubmit={handleSubmit}>
                 <ul className=" bg-blue-800  text-white rounded-lg  ">
                     <li className="pt-5 pb-2">
-                     <label>
-                     <span>Name :  </span>
-                     <input type="text"
-                     placeholder="Enter Item Name"
+                        <label>
+                        <span>Name :  </span>
+                        <input type="text"
+                        placeholder="Enter Item Name"
                      value={name}
                      onChange={handleNameChange}
                      required
