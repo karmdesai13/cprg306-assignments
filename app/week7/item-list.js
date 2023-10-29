@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Item from "./item.js";
 
-export default function ItemList({ items }) {
+export default function ItemList({ items,onItemSelect }) {
     const[sortby, setSortby] = useState("name");
     let groupedItems={};
     
@@ -55,7 +55,7 @@ export default function ItemList({ items }) {
                             <h3 className="capitalize text-xl font-semibold mb-3">{category}:</h3>
                             <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                                 {items.map((item) => (
-                                    <Item key={item.id} {...item} />
+                                    <Item key={item.id} {...item}  onSelect={ onItemSelect}/>
                                 ))}
                             </ul>
                         </div>
@@ -64,7 +64,7 @@ export default function ItemList({ items }) {
             ) : (
                 <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {sortedItems.map((item) => (
-                        <Item key={item.id} {...item} />
+                        <Item key={item.id} {...item} onSelect={onItemSelect}/>
                     ))}
                 </ul>
             )}
