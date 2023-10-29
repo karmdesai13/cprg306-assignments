@@ -1,20 +1,11 @@
-
-export default function Item(name, quantity, category) {
-   
-
-  return (
-      <div>
-          <li className="bg-blue-800
-                              m-4 w-[270px] text-xl border-[2px]
-                              border-white rounded
-                              p-3 text-center hover:bg-orange-500
-                              hover:text-3xl hover:w-[400px]">{name}</li>
-          <li  className="m-3 bg-blue-900 p-3
-              w-[300px] ml-[300px] hover:bg-orange-500
-              border-[2px] border-white rounded-full text-center hover:text-2xl">
-                  <p className="">Pick {name}</p>
-                  <p className="">From {category}</p>
-              </li>
-      </div>
-  );
+export default function Item({ name, quantity, category }) {
+    return (
+        <div className="flex justify-center items-center my-4">
+            <li className="bg-purple-800 p-4 w-[300px] border border-purple-600 rounded-lg text-white hover:bg-purple-700 shadow-lg transform hover:scale-105 transition duration-300 ease-in-out">
+                <h3 className="text-lg font-semibold">{name}</h3>
+                <p className="text-sm text-purple-200">Quantity: {quantity}</p> 
+                <p className="text-sm text-purple-300">Category: {category}</p>
+            </li>
+        </div>
+    );
 }

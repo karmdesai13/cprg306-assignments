@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Item from "./item.js";
 import eventData from "./items.json";
 
 export default function ItemList() {
@@ -24,65 +25,50 @@ export default function ItemList() {
     }});
 
 
-    return(
+    return (
+        <main className="bg-gray-800 text-white min-h-screen p-4">
 
-        <main>
+            <div className="text-center mb-5">
+                <h1 className="text-2xl font-bold mb-3">Shopping List</h1>
+                <div className="inline-flex m-4">
+                    <button onClick={() => setSortby("name")} 
+                        className={`bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded m-1 transition duration-300 transform hover:scale-110
+                        ${sortby === "name" ? "bg-green-600 hover:bg-green-700" : ""}`}
+                    >Sort by Name</button>
+                    
+                    <button onClick={() => setSortby("category")} 
+                        className={`bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded m-1 transition duration-300 transform hover:scale-110
+                        ${sortby === "category" ? "bg-green-600 hover:bg-green-700" : ""}`}
+                    >Sort by Category</button>
 
-        <div className=" text-center">
-          <h1 className="text-xl text-white p-3 h-10">Sort By:</h1>
-          <button onClick={() => setSortby("name")} 
-                className={`bg-blue-500 text-white p-2 px-4 m-2  hover:bg-orange-500 hover:text-xl  border-2 rounded h-10 font-mon 
-                ${ sortby === "name" ? "bg-green-500 underline ": "" }`}
-                >Sort by Name
-          </button> 
-          <button onClick={() => setSortby("category")} 
-             className={`bg-blue-500 text-white p-2 m-2  hover:bg-orange-500 hover:text-xl border-2 rounded h-10 font-mono 
-             ${sortby === "category"? "bg-green-500 underline":""}`}>
-                Sort by Category
-          </button>
-
-          <button onClick={() => {setSortby("group")}}
-                className={`bg-blue-500 text-white p-2 m-2  hover:bg-orange-500 hover:text-xl border-2 rounded h-10 font-mono 
-                ${sortby === "group"? "bg-green-500 underline":""}`}>
-                Group by Category (Working Now) 
-          </button>
-        
-        </div>
-       
-
-        {sortby==="group"?(
-            <div className="m-4 ">
-                {Object.entries(groupedItems).map(([category, items]) => (
-                    <div key={category} className="">
-                        
-                        <ul className="">
-                            <h3 className="capitalize text-2xl ">{category} :</h3>
-                            {items.map((item) => (
-                                <li key={item.id} className="bg-blue-800
-                                m-4 w-[270px] text-xl border-[2px]
-                                border-white rounded
-                                p-3 text-center hover:bg-orange-500
-                                hover:text-3xl hover:w-[400px]">{item.name}</li>
-                            ))}
-                        </ul>
-                    </div>
-                ))}
+                    <button onClick={() => setSortby("group")}
+                        className={`bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded m-1 transition duration-300 transform hover:scale-110
+                        ${sortby === "group" ? "bg-green-600 hover:bg-green-700" : ""}`}
+                    >Group by Category</button>
+                </div>
             </div>
-        ):(<ul className="m-10">
-            {sortedItems.map((item) => (
-                <li key={item.id} className="m-3 bg-blue-900 p-3
-                w-[300px] ml-[300px] hover:bg-orange-500
-                border-[2px] border-white rounded-full text-center hover:text-2xl">
-                    <p className="">Pick {item.name}</p>
-                    <p className="">From {item.category}</p>
-                </li>
-            ))}
-        </ul>)}
+
+            {sortby === "group" ? (
+                <div className="space-y-4">
+                    {Object.entries(groupedItems).map(([category, items]) => (
+                        <div key={category}>
+                            <h3 className="capitalize text-xl font-semibold mb-3">{category}:</h3>
+                            <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                {items.map((item) => (
+                                    <Item key={item.id} {...item} />
+                                ))}
+                            </ul>
+                        </div>
+                    ))}
+                </div>
+            ) : (
+                <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {sortedItems.map((item) => (
+                        <Item key={item.id} {...item} />
+                    ))}
+                </ul>
+            )}
 
         </main>
-
-
-
-
     );} 
     
