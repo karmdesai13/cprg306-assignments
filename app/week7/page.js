@@ -25,7 +25,7 @@ export default function Page() {
         <div className="bg-black text-white p-40 text-center flex">
             
             <div>
-                <NewItem onAddItem={handleAddItem} />
+                <NewItem OnAddItem={handleAddItem} />
                 <ItemList items={items} onItemSelect={handleItemSelect} />
             </div>
 
