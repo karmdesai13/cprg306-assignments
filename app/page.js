@@ -29,6 +29,10 @@ export default function cprg306() {
         <Link href="./week7" className="text-white bg-purple-600 rounded-full p-2 underline hover:text-xl hover:bg-green-500 border-white border-2">Week7</Link>
       </div>
 
+      <div className="m-6 text-center ">
+        <Link href="./week8" className="text-white bg-purple-600 rounded-full p-2 underline hover:text-xl hover:bg-green-500 border-white border-2">Week8</Link>
+      </div>
+
     </main>
     
   );
