@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { addItem, getItems } from "../_services/shopping-list-service";
+import { auth } from "../_utils/firebase";
 
 import ItemList from "./item-list";
 import MealIdeas from "./meal-ideas";
@@ -9,30 +10,40 @@ import NewItem from "./new-item";
 export default function Page() {
     const [items, setItems] = useState([]);
     const [selectedItemName, setSelectedItemName] = useState("");
-    const user = { uid: "currentUserUid" }; // Replace with actual user UID
+    const [user, setUser] = useState(null);
 
-    // Function to load items from Firestore
-    async function loadItems() {
+    useEffect(() => {
+        
+        const unsubscribe = auth.onAuthStateChanged(currentUser => {
+            setUser(currentUser);
+            if (currentUser) {
+                loadItems(currentUser.uid);
+            }
+        });
+
+       
+        return () => unsubscribe();
+    }, []);
+
+    
+    async function loadItems(uid) {
         try {
-            const fetchedItems = await getItems(user.uid);
+            const fetchedItems = await getItems(uid);
             setItems(fetchedItems);
         } catch (error) {
             console.error("Error loading items:", error);
         }
     }
 
-    // useEffect to call loadItems when the component mounts
-    useEffect(() => {
-        loadItems();
-    }, []); // Empty dependency array means it runs once on mount
-
-    // Update handleAddItem to add item to Firestore
+    
     async function handleAddItem(newItem) {
-        try {
-            const docId = await addItem(user.uid, newItem);
-            setItems(prevItems => [...prevItems, { ...newItem, id: docId }]);
-        } catch (error) {
-            console.error("Error adding item:", error);
+        if (user) {
+            try {
+                const docId = await addItem(user.uid, newItem);
+                setItems(prevItems => [...prevItems, { ...newItem, id: docId }]);
+            } catch (error) {
+                console.error("Error adding item:", error);
+            }
         }
     }
 
