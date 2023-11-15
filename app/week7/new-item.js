@@ -96,7 +96,7 @@ export default function NewItem({OnAddItem}) {
 
                     
                     <button type="submit" className="bg-green-500 p-4 m-6 text-center
-                     hover:text-white  hover:underline hover:bg-orange-500  rounded-xl ">
+                     hover:text-white  hover:underline hover:bg-orange-500  rounded-xl transition duration-300 transform hover:scale-110 ">
                         Add Item
                     </button>
                 </ul>
